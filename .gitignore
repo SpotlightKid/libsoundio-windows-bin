@@ -1,5 +1,7 @@
 *.DS_Store
-build/libsoundio
 build/win
 build/linux
 build/osx
+build/libsoundio-*/
+build/build-*/
+build/dist-*/

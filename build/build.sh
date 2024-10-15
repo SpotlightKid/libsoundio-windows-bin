@@ -1,9 +1,14 @@
 #!/bin/bash
+
 set -e
-cd libsoundio
-rm -rf build/
-mkdir build/
-cd build
-cmake ..
-make
-sudo make install
+
+SRC_DIR="$1"
+BUILD_DIR="build-$1-$2"
+INSTALL_ROOT="dist-$1-$2"
+
+cmake \
+    -B "$BUILD_DIR" \
+    -S "$SRC_DIR" \
+    -DCMAKE_BUILD_TYPE=Release
+cmake --build "$BUILD_DIR"
+DESTDIR="$INSTALL_ROOT" cmake --install "$BUILD_DIR"
